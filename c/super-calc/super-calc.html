@@ -1,0 +1,116 @@
+<html>
+<head>
+
+<title>super calc</title>
+<style>
+body{width:80%; margin:50px auto;}
+.flex{
+  display:flex;
+  justify-content:space-around;
+}
+.flex-col{
+  display:flex;
+  flex-direction:column;
+  justify-content:space-around;
+}
+.inputs > input {
+  margin:5px 0;
+  width:50px;
+  border-radius:5px;
+}
+
+.border-pink {
+  margin:15px;
+  border:1px solid pink;
+}
+
+.calc-buttonz button{
+  widte:25px;
+  height:25px;
+  background:violet;
+  bordr:1px solid;
+}
+
+</style>
+</head>
+<body>
+
+<h1> my super calc </h1>
+<div class="content flex-col">
+
+  <div class="3-boxes border-pink flex">
+
+      <div class="inputs flex-col" >
+        <input id="n1"/>
+        <input id="n2"/>
+      </div>
+
+      <div class= "calc-buttonz flex-col">
+
+        <div class="flex">
+          <button>+</button>
+          <button>-</button>
+          </div>
+
+          <div class="flex">
+            <button>*</button>
+            <button>/</button>
+            </div>
+      </div>
+
+      <div class="result flex-col" >
+        res
+      </div>
+
+
+  </div>
+  <div class="border-pink"> table</div>
+</div>
+<script>
+
+  let btnz =
+  document.querySelectorAll('.calc-buttonz button')
+
+let aritmeticFn = e => {
+  let btn = aritmetic = e.target.textContent
+
+  let n1 = parseInt(document.querySelector('#n1').value)
+
+  let n2 =parseInt (document.querySelector('#n2').value)
+
+  let setRes = r => document.querySelector('.result').innerHTML = r;
+
+  switch (aritmetic){
+    case '+': setRes(n1+n2);break;
+    case '-': setRes(n1-n2);break;
+    case '*': setRes(n1*n2);break;
+    case '/': setRes(n1/n2);break;
+  }
+
+  let ex = n1 + aritmetic + n2;
+  let row = `
+  <div> class = "row">
+    <span>${ex}</span>
+    <button onclick="adit(event)">adit</button>
+    <button>delete</button>
+    </div>`
+
+    let t = documents.querySelector('.table')
+    t.innerHTML += row;
+}
+
+  btnz.forEach( bth=> bth.onclick = aritmeticFn )
+
+function edit(e){
+  let row = e.target.parentNode
+  consule.log('adit', e.target, row)
+  let s = row. querySelector('span')
+  let ex = s.textContent
+  s.innerHTML = `<input value="${ex}"/> `
+}
+
+
+
+</script>
+
+</body>
